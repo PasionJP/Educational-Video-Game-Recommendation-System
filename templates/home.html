@@ -1,0 +1,28 @@
+{%extends "/shared/layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+	{{ super() }}
+
+    <link rel="stylesheet" href="/static/home.css" />
+{% endblock %}
+
+{% block content %}
+	<div class="d-flex h-100 justify-content-center align-items-center mt-n5">
+	    <div class="container-xl justify-content-center align-self-center welcome card" style="background-color: rgba(245, 245, 245, 0.7);" >
+			<div class="container-xl justify-content-center align-self-center welcome" >
+				<h3 class="text-center">WELCOME TO EDUCGAMES</h3>
+				<h4 class="text-center"> 🎮Get ready to dive into a world of limitless gaming possibilities!🎮</h4>
+				<p class="text-center lh-base">	Embark on an exciting journey where your gaming preferences shape the adventure. Don't miss out on the magic – sign in now to unlock the full potential of our recommendation engine. Building your personalized gamer profile is as easy as listing the games you've loved. Then, behold as we work our magic, conjuring up incredible new game recommendations crafted exclusively for you. Your ultimate gaming experience starts right here – let the thrill begin! 🚀</p>
+			</div>
+	    	<form action="/signup" method="GET">
+				<div class="form-group">
+				  <div style="width: 100%" class="col-md-12 text-center">
+				  <button type="submit" class="btn btn-info justify-content-center">Create Your Profile</button>
+				  </div>
+				</div>
+			  </form>
+	    </div>
+	</div>
+{% endblock %}

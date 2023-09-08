@@ -1,0 +1,63 @@
+{%extends "/shared/layout.html" %}
+
+{% block title %}EducGames{% endblock %}
+
+{% block content %}
+	<div class="container">	
+		<div style="width:100%; margin-top: 3em;">
+			{% if msg %}
+				<div class="alert alert-success">{{msg}}</div>
+			{% endif %}
+			<form action="/games/search" method="GET">
+			  <div class="form-group">
+			    <div style="width: 100%">
+			    <div style="width: 90%; display: inline-block">
+			    <input type="search" name="keyword" autofocus class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{keyword}}" placeholder="Search for games...">
+			    </div>
+				<button type="submit" style="margin-left: 5px;" class="btn btn-info">Search</button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+		<div>
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
+			{% if games %}
+				<!-- {% if search %}
+				<h4>Search Found ({{count}})</h4>
+				{% endif %} -->
+				<!-- {% for game in games %}
+				<div class="card book">
+				  <img src="https://cdn.akamai.steamstatic.com/steam/apps/{{game['appid']}}/header.jpg?" class="card-img-top" alt="{{game[1]}}">
+				  <div class="card-body">
+				    <h5 class="card-title"><a href="https://store.steampowered.com/app/{{game['appid']}}">{{game['name']}}</a></h5>
+				    <p class="card-text bookdesc">{{game['tags']}}</p>
+
+				    <p class="card-text">
+				    </span>
+					</p>
+
+				    <a href="/games/add/{{game['id']}}" {{ 'disabled' if user_games!=None and str(game['id']) in user_games else '' }} class="btn btn-outline-warning {{ 'disabled' if str(game['id']) in user_games else '' }}"><i class="bi bi-journal-plus"></i> {{ 'Added' if str(game['id']) in user_games else 'Add' }}</a>
+				  </div>
+				</div>
+				{% endfor %} -->
+				<!-- <div id="recoGames"> -->
+						{% for game in games %}
+						<div class="card book align-self-stretch">
+							<img src="https://cdn.akamai.steamstatic.com/steam/apps/{{game['appid']}}/header.jpg?" class="w-100" alt="{{game[1]}}">
+							<div class="card-body">
+								<h5><a href="https://store.steampowered.com/app/{{game['appid']}}">{{game['name']}}</a></h5>
+								<h6 class="text-muted">{{game['tags']}}</h6>
+		  
+								<a href="/games/add/{{game['id']}}" {{ 'disabled' if user_games!=None and str(game['id']) in user_games else '' }} class="btn btn-outline-danger {{ 'disabled' if str(game['id']) in user_games else '' }}"><i class="bi bi-journal-plus"></i> {{ 'Added' if str(game['id']) in user_games else 'Add' }}</a>
+							</div>
+						  </div>
+						{%endfor%}
+				<!-- </div> -->
+				</div>
+			{% else %}
+				<h4>No Games Found!</h4>
+				<p>Please contact the librarian</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

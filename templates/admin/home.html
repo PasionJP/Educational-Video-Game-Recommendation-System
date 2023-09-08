@@ -1,0 +1,28 @@
+{%extends "/shared/admin_layout.html" %}
+
+{% block title %}Admin Home{% endblock %}
+
+{% block head %}
+	{{ super() }}
+
+    <link rel="stylesheet" href="/static/home.css" />
+{% endblock %}
+
+{% block content %}
+	<div class="d-flex h-100 justify-content-center align-items-center mt-n5">
+	    <div class="row justify-content-center align-self-center welcome">
+	    	<h3>WELCOME</h3>
+			<div style="width:100%">
+			<form action="/admin/games/search" method="GET">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Search and manage games from the library</label>
+			    <input type="search" name="keyword" autofocus class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for games...">
+			  </div>
+			  <div class="text-center">
+				<button type="submit" class="btn btn-info">Search</button>
+			  </div>
+			</form>
+			</div>
+	    </div>
+	</div>
+{% endblock %}

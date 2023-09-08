@@ -1,0 +1,57 @@
+{%extends "/shared/admin_layout.html" %}
+
+{% block title %}Manage Games - View {% endblock %}
+
+{% block content %}
+	<div class="container">	
+		<div style="width:100%; margin-top: 3em;">
+			{% if msg %}
+				<div class="alert alert-success">{{msg}}</div>
+			{% endif %}
+			<form action="/admin/games/search" method="GET">
+			  <div class="form-group">
+			    <div style="width: 100%">
+			    <div style="width: 90%; display: inline-block;">
+			    <input type="search" name="keyword" autofocus class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{keyword}}" placeholder="Search for games...">
+			    </div>
+				<button type="submit" style="margin-left: 5px;" class="btn btn-info">Search</button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+
+		<div>
+			<h2>Manage Games</h2>
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
+				
+				{% if games %}
+					{% for game in games %}
+					<div class="card book align-self-stretch">
+					  <img src="https://cdn.akamai.steamstatic.com/steam/apps/{{game['appid']}}/header.jpg?" class="card-img-top" alt="{{game[1]}}">
+					  <div class="card-body">
+						<h5 class="card-title"><a href="https://store.steampowered.com/app/{{game['appid']}}">{{game['name']}}</a></h5>
+						<p class="card-text bookdesc">{{game["desc"]}}</p>
+	
+						<p class="card-text">
+						
+						</span>
+						</p>
+						<form method="get" action="">
+							<a href="edit/{{game['id']}}" class="btn btn-outline-info">
+								<i class="bi bi-pen-fill"></i> Edit
+							</a>
+							<a href="delete/{{game['id']}}" class="btn btn-outline-danger">
+								<i class="bi bi-trash"></i> Delete
+							</a>
+						</form>
+					  </div>
+					</div>
+					{% endfor %}
+				{% else %}
+					<p>No Games In Stash!</p>
+				{% endif %}	
+			</div>
+		</div>
+		
+	</div>
+{% endblock %}

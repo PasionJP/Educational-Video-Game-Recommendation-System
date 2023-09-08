@@ -1,0 +1,168 @@
+<html>
+<head>
+	{%block head %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="/static/home.css"/>
+	<link rel="stylesheet" href="/static/style.css" />
+	<link href="/static/global.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>	
+		<link rel="stylesheet" href="/static/style.css" />
+    {% endblock %}
+</head>
+<body {{"class=home" if g and g.bg==1 else ""}}>
+		<nav class="navbar sticky-top navbar-expand-xl navbar-dark">
+			<a href="#" class="navbar-brand"><i class="fa fa-book-open-reader"></i>Educ<b>Games</b></a>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- Collection of nav links, forms, and other content for toggling -->
+			<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+				<div class="navbar-nav">
+					<a href="/" class="nav-item nav-link active">Home</a>
+					<a href="/games" class="nav-item nav-link active">Games</a>
+					<a href="/main" class="nav-item nav-link active">Recommended</a>
+				</div>
+
+				{% if g and g.user %}
+				<div class="navbar-nav ml-auto mr-5">
+					<a href="#" class="nav-item nav-link notifications"><i class="fa fa-bell-o"></i></a>
+					<div class="nav-item dropdown">
+						<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-32.png" class="avatar" alt="Avatar"> {{username}} <b class="caret"></b></a>
+						<div class="dropdown-menu">
+							<a href="/user" class="dropdown-item"><i class="fa fa-user"></i> Profile</a></a>
+							<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
+							<div class="dropdown-divider"></div>
+							<a href="/signout" class="dropdown-item"><i class="material-icons">&#xE8AC;</i>Sign out</a></a>
+						</div>
+					</div>
+				</div>
+				{% else %}
+				<div class="navbar-nav ml-auto action-buttons">
+					<div class="nav-item dropdown">
+						<a href="/signin"  class="nav-link active mr-4">Login</a>
+						<!-- <div class="dropdown-menu action-form">
+							<form action="/signin" method="POST">
+								<p class="hint-text">Sign in with your social media account</p>
+								<div class="form-group social-btn clearfix">
+									<a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
+									<a href="#" class="btn btn-secondary google-btn float-right"><i class="fa fa-google"></i> Google</a>
+								</div>
+								<div class="or-seperator"><b>or</b></div>
+								<div class="form-group">
+									<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+								</div>
+								<input type="submit" class="btn btn-primary btn-block" value="Login">
+								<div class="text-center mt-2">
+									<a href="#">Forgot Your password?</a>
+								</div>
+							</form>
+						</div> -->
+					</div>
+					<div class="nav-item dropdown">
+						<a href="/signup" class="btn btn-primary sign-up-btn">Sign up</a>
+						<!-- <div class="dropdown-menu action-form">
+							<form action="/signup" method="post">
+								<p class="hint-text">Fill in this form to create your account!</p>
+								<div class="form-group">
+									<label for="name">Name</label>
+									<input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder="Your name">
+								</div>
+								<div class="form-group">
+									<label for="birthdate">Birthdate</label>
+									<input type="date" id="birthdate" class="form-control" name="birthdate" required>
+								</div>
+								<div class="form-group">
+									<label for="email">Email address</label>
+									<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address">
+									<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								</div>
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+								</div>
+								  
+								<div class="form-group">
+									<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+								</div>
+								<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+							</form>
+						</div> -->
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</nav>	
+		{%block content %}{% endblock %}
+		<section id="footer" class="p_3">
+			<div class="container-xl">
+			   <div class="row footer_1">
+				  <div class="col-md-4">
+					 <div class="footer_1i">
+						<h6 class="text-white fw-bold">RELEVANCE</h6>
+						<hr class="line mb-4">
+						<div class="row footer_1i_small">
+						   <h6 class="col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a class="text-muted" href="#">New & Trending</a></h6>
+						   <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a class="text-muted" href="#">Top Sellers</a></h6>
+						   <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a class="text-muted" href="#">Popular Upcoming</a></h6>
+						   <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a class="text-muted" href="#">Specials</a></h6>
+						</div>
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="footer_1i">
+						<h6 class="text-white fw-bold">GENRE</h6>
+						<hr class="line mb-4">
+						<ul class="mb-0">
+						   <li class="d-inline-block"><a class="d-block" href="#">Action</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Adventure</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Casual</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Indie</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Multiplayer</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Racing</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">RPG</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Simulation</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Sports</a></li>
+						   <li class="d-inline-block"><a class="d-block" href="#">Strategy</a></li>
+						</ul>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 <section id="footer_b" class="pt-3 pb-3">
+			<div class="container-xl">
+			   <div class="row footer_b1">
+				  <div class="col-md-8">
+					 <div class="footer_b1l">
+						<p class="mb-0 fs-6 text-muted mt-1">© 2023 EducGames. All Rights Reserved | Developed by <a class="col_red" href="#">JP PASION</a></p>
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="footer_b1r text-end">
+						<ul class="social-network social-circle mb-0">
+						   <li><a href="#" class="icoRss" title="Github"><i class="fa-brands fa-github"></i></a></li>
+						   <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
+						   <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa-brands fa-facebook"></i></a></li>
+						   <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+						</ul>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 </section>
+</body>
+</html>
